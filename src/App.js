@@ -14,6 +14,10 @@ function App() {
   setUserList([...userlist, newUserData]);
  }
 
+ const editUser = (editedUserData)=>{
+  setUserList([...userlist, editedUserData]);
+ }
+
 //  const addUser = ({status, callback})=>{
   
 //  }
@@ -39,9 +43,9 @@ const deleteuser = (id)=>{
             </div>
           </Route>
           <Route path='/create'> 
-              <CreateUser status='add' callback={addUser} list={userlist}/>
+              <CreateUser status='add' callback={addUser} list={userlist} />
           </Route>
-          <Route path='/edit/:id' children={<CreateUser status='edit' />}></Route>
+          <Route path='/edit/:id' children={<CreateUser status='edit' callback={editUser} list={userlist} />}></Route>
           <Route path='*'>
               404 not found
           </Route>          
